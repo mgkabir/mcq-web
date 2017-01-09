@@ -5,6 +5,8 @@ import { PersonDetailsComponent } from './person-details.component';
 
 import {EmployeeListComponent} from './employee-list.component';
 
+import { QuestionDetailsComponent } from './question/question-details.component';
+
 // Route config let's you map routes to components
 const routes: Routes = [
   // map '/persons' to the people list component
@@ -23,6 +25,11 @@ const routes: Routes = [
     path: 'persons/:id',
     component: PersonDetailsComponent
   },
+  {
+    path: 'question/:id',
+    component: QuestionDetailsComponent
+  },
+
   // map '/' to '/persons' as our default route
   {
     path: '',

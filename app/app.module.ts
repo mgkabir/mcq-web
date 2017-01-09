@@ -10,9 +10,12 @@ import { PeopleListComponent } from './people-list.component';
 import { PersonDetailsComponent } from './person-details.component';
 import {EmployeeListComponent} from './employee-list.component';
 
+import { QuestionDetailsComponent } from './question/question-details.component';
+
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule, HttpModule],
-  declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent, EmployeeListComponent],
+  declarations: [ AppComponent, PeopleListComponent, PersonDetailsComponent,
+    EmployeeListComponent, QuestionDetailsComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PeopleService } from './people.service';
 import {EmployeeService} from './employee.service';
+import {QuestionService} from './question/question.service';
 
 @Component({
   selector: 'my-app',
@@ -9,11 +10,14 @@ import {EmployeeService} from './employee.service';
   <nav>
       <a routerLink="/persons" routerLinkActive="active">StarWars Chars</a>
       <a routerLink="/employees" routerLinkActive="active">Employees</a>
+      <a routerLink="/question/1" routerLinkActive="active">Q1</a>
+      <a routerLink="/question/2" routerLinkActive="active">Q2</a>
+      <a routerLink="/question/3" routerLinkActive="active">Q3</a>
   </nav>
   <router-outlet>
   `,
-  providers: [PeopleService, EmployeeService]
+  providers: [PeopleService, EmployeeService, QuestionService]
 })
 export class AppComponent {
-  title:string = 'Star Wars Characterz!';
+  title:string = 'MCQ Web';
 }
