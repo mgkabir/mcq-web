@@ -23,7 +23,7 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     ngOnInit(){
         this.sub = this.route.params.subscribe(params => {
           let id = Number.parseInt(params['id']);
-          console.log('getting question with id: ', id);
+        //  console.log('getting question with id: ', id);
           this.questionService
             .get(id)
             .subscribe(q => this.question = q);

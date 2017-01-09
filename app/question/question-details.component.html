@@ -1,4 +1,6 @@
 <!-- new syntax for ng-if -->
 <section *ngIf="question">
-    <h2>You selected: {{question.questionText}}</h2>
+    <h2>Question :</h2> ({{question.questionId}}){{question.questionText}}
+    <hr>
+    <div *ngFor="let opt of question.options">{{opt.optionText}}</div>
 <section>

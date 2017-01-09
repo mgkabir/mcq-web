@@ -12,10 +12,16 @@ export class QuestionService{
 
     get(id: number): Observable<Question> {
       console.log("Question ID : "+id);
-      let person$ = this.http
+      return this.http
         .get(`${this.baseUrl}/question/${id}`, {headers: this.getHeaders()})
-        .map(mapQuestion);
-        return person$;
+        .map(function(res:Response){
+          console.log("Response JSON: "+res.json().options);
+          return <Question>({
+            questionId:res.json().questionId,
+            questionText: res.json().questionText,
+            options:res.json().options,
+          });
+        });
     }
 
   private getHeaders(){
