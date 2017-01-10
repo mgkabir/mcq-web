@@ -3,4 +3,5 @@ export class Question{
   questionText: string;
   options: string[];
   selectedOptionId: number;
+  isAnswerCorrect: boolean;
 }

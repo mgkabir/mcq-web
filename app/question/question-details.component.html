@@ -1,5 +1,6 @@
 <section *ngIf="question">
   <form #f="ngForm" novalidate>
+  <form (ngSubmit)="submitAnswer()" #questionForm="ngForm">
     <h2>Question # {{question.questionId}}</h2> {{question.questionText}}
     <hr>
     <div>
@@ -11,5 +12,7 @@
         </label>
       </div>
     </div>
+    <button type="submit" [disabled]="!questionForm.form.valid">Submit Answer</button>
   </form>
+    <pre>{{question | json}}</pre>
 <section>

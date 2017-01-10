@@ -16,15 +16,25 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     options: string[] ;
     selectedOption: number;
 
+
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
                 private router: Router){
     }
 
+    submitAnswer(){
+      this.questionService
+          .save(this.question)
+          .subscribe(
+            (r: Response) => {
+              this.question.isAnswerCorrect = r.json().correct;
+            }
+          );
+    }
+
     ngOnInit(){
         this.sub = this.route.params.subscribe(params => {
           let id = Number.parseInt(params['id']);
-        //  console.log('getting question with id: ', id);
           this.questionService
             .get(id)
             .subscribe(q => this.question = q);
