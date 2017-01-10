@@ -4,7 +4,7 @@ import {EmployeeService} from './employee.service';
 import {QuestionService} from './question/question.service';
 
 @Component({
-  selector: 'my-app',
+  selector: 'mcq-web',
   template: `
   <h1> {{title}} </h1>
   <nav>
