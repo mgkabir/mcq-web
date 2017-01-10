@@ -1,6 +1,15 @@
-<!-- new syntax for ng-if -->
 <section *ngIf="question">
-    <h2>Question :</h2> ({{question.questionId}}){{question.questionText}}
+  <form #f="ngForm" novalidate>
+    <h2>Question # {{question.questionId}}</h2> {{question.questionText}}
     <hr>
-    <div *ngFor="let opt of question.options">{{opt.optionText}}</div>
+    <div>
+      <label>Answer Options</label>
+      <div *ngFor="let opt of question.options">
+        <label>
+          <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId" value="{{opt.optionId}}">
+          {{opt.optionText}}
+        </label>
+      </div>
+    </div>
+  </form>
 <section>

@@ -14,6 +14,7 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
     sub: any;
     options: string[] ;
+    selectedOption: number;
 
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
