@@ -15,7 +15,6 @@ export class QuestionService{
       return this.http
         .get(`${this.baseUrl}/question/${id}`, {headers: this.getHeaders()})
         .map(function(res:Response){
-          console.log("Response JSON: "+res.json().options);
           return <Question>({
             questionId:res.json().questionId,
             questionText: res.json().questionText,
@@ -29,17 +28,4 @@ export class QuestionService{
     headers.append('Accept', 'application/json');
     return headers;
   }
-}
-
-function mapQuestion(response:Response): Question{
-    return toQuestion(response.json());
-}
-
-function toQuestion(r:any): Question{
-  let question = <Question>({
-    questionId: r.questionId,
-    questionText: r.questionText,
-  });
-  console.log('Parsed question:', question);
-  return question;
 }
