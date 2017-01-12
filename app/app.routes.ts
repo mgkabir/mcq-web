@@ -6,6 +6,7 @@ import { PersonDetailsComponent } from './person-details.component';
 import {EmployeeListComponent} from './employee-list.component';
 
 import { QuestionDetailsComponent } from './question/question-details.component';
+import {HomeComponent} from './home/home.component';
 
 // Route config let's you map routes to components
 const routes: Routes = [
@@ -29,11 +30,15 @@ const routes: Routes = [
     path: 'question/:id',
     component: QuestionDetailsComponent
   },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
 
   // map '/' to '/persons' as our default route
   {
     path: '',
-    redirectTo: '/question/2',
+    redirectTo: 'home',
     //redirectTo: '/persons',
     pathMatch: 'full'
   },
