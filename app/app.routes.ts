@@ -33,7 +33,8 @@ const routes: Routes = [
   // map '/' to '/persons' as our default route
   {
     path: '',
-    redirectTo: '/persons',
+    redirectTo: '/question/2',
+    //redirectTo: '/persons',
     pathMatch: 'full'
   },
 ];
