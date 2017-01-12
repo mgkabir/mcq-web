@@ -13,9 +13,6 @@ import { QuestionService } from './question.service';
 export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
     sub: any;
-    options: string[] ;
-    selectedOption: number;
-
 
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
@@ -24,7 +21,7 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
 
     submitAnswer(){
       this.questionService
-          .save(this.question)
+          .submitAnswer(this.question)
           .subscribe(
             (r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;

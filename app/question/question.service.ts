@@ -22,8 +22,8 @@ export class QuestionService{
           });
         });
     }
-
-    save(question: Question) : Observable<Response>{
+    /*Submits selcted option */
+    submitAnswer(question: Question) : Observable<Response>{
       console.log(`save() : qId : ${question.questionId} : Selected OptionId : ${question.selectedOptionId}`);
       return this.http
         .post(`${this.baseUrl}/question/${question.questionId}/option/${question.selectedOptionId}`, {headers: this.getHeaders()});
