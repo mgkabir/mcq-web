@@ -1,10 +1,18 @@
 
-
+<!-- Show response to the previous submission-->
 <section *ngIf="answerSubmitted">
-  {{question.isAnswerCorrect}}
-  <a routerLink="/question/{{question.nextQuestionId}}" routerLinkActive="active">Next Question</a>
+  <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
+    <div *ngIf="question.isAnswerCorrect">
+      <p class="text-success">Correct Answer !</p>
+    </div>
+    <div *ngIf="!question.isAnswerCorrect">
+      <p class="text-danger">Wrong Answer !</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Next, Please !</button>
+  </form>
 </section>
 
+<!-- Show Question and Options -->
 
 <section *ngIf="question">
   <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
@@ -21,8 +29,6 @@
               </label>
           </div>
         </div>
-
         <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit</button>
-
   </form>
 <section>

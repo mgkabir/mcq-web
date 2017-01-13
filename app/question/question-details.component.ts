@@ -21,6 +21,13 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
                 private router: Router){
     }
 
+    nextQuestion(){
+      this.answerSubmitted = false;
+      this.questionService
+      .get(this.question.nextQuestionId)
+      .subscribe(q => this.question = q);
+    }
+
     submitAnswer(){
       this.questionService
           .submitAnswer(this.question)
