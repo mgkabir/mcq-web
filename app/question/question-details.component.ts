@@ -26,6 +26,8 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
       this.questionService
       .get(this.question.nextQuestionId)
       .subscribe(q => this.question = q);
+
+      this.router.navigate(['/question',this.question.nextQuestionId]);
     }
 
     submitAnswer(){
