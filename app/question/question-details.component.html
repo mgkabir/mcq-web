@@ -1,18 +1,28 @@
+
+
+<section *ngIf="answerSubmitted">
+  {{question.isAnswerCorrect}}
+  <a routerLink="/question/{{question.nextQuestionId}}" routerLinkActive="active">Next Question</a>
+</section>
+
+
 <section *ngIf="question">
   <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
 
         <h2>Question # {{question.questionId}}</h2> {{question.questionText}}
         <hr>
         <div>
-          <label>Answer Options [Select Best One]</label>
+          <label for="answer">Answer Options [Select Best One]</label>
           <div class="radio" *ngFor="let opt of question.options">
               <label >
                   <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
-                        value="{{opt.optionId}}" required>
+                        value="{{opt.optionId}}" id="answer" required>
                   {{opt.optionText}}
               </label>
           </div>
         </div>
+
         <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit</button>
+
   </form>
 <section>

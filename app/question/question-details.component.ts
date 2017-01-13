@@ -13,6 +13,8 @@ import { QuestionService } from './question.service';
 export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
     sub: any;
+    respJSON : Response;
+    answerSubmitted: boolean = false;
 
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
@@ -25,8 +27,10 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
           .subscribe(
             (r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;
+              this.question.nextQuestionId = r.json().nextQuestion.questionId;
             }
           );
+          this.answerSubmitted = true;
     }
 
     ngOnInit(){
@@ -41,5 +45,9 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     ngOnDestroy(){
         this.sub.unsubscribe();
     }
-
+/*
+    get diagnostic(){
+      return JSON.stringify(this.resp);
+    }
+    */
 }
