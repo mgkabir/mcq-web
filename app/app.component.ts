@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { PeopleService } from './people.service';
-import {EmployeeService} from './employee.service';
 import {QuestionService} from './question/question.service';
 
 @Component({
@@ -18,7 +16,7 @@ import {QuestionService} from './question/question.service';
     <router-outlet>
 
   `,
-  providers: [PeopleService, EmployeeService, QuestionService]
+  providers: [QuestionService]
 })
 export class AppComponent {
   title:string = 'MCQ Web';

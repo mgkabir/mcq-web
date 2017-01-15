@@ -15,6 +15,7 @@ export class QuestionService{
       return this.http
         .get(`${this.baseUrl}/question/${id}`, {headers: this.getHeaders()})
         .map(function(res:Response){
+          console.log("Question Text : ");
           return <Question>({
             questionId:res.json().questionId,
             questionText: res.json().questionText,
