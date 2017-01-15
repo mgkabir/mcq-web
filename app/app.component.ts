@@ -6,7 +6,8 @@ import {QuestionService} from './question/question.service';
 @Component({
   selector: 'mcq-web',
   template: `
-  <h1> {{title}} </h1>
+  <h2> {{title}} </h2>
+  <hr>
   <nav>
       <!-- a routerLink="/persons" routerLinkActive="active">StarWars Chars</a >
       <a routerLink="/question/1" routerLinkActive="active">Q1</a>

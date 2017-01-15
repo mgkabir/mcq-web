@@ -23,10 +23,6 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
 
     nextQuestion(){
       this.answerSubmitted = false;
-      this.questionService
-      .get(this.question.nextQuestionId)
-      .subscribe(q => this.question = q);
-
       this.router.navigate(['/question',this.question.nextQuestionId]);
     }
 
@@ -36,7 +32,7 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
           .subscribe(
             (r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;
-              this.question.nextQuestionId = r.json().nextQuestion.questionId;
+              this.question.nextQuestionId = r.json().nextQuestionId;
             }
           );
           this.answerSubmitted = true;

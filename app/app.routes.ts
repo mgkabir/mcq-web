@@ -39,7 +39,6 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    //redirectTo: '/persons',
     pathMatch: 'full'
   },
 ];
