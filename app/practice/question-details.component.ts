@@ -23,7 +23,7 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
 
     nextQuestion(){
       this.answerSubmitted = false;
-      this.router.navigate(['/question',this.question.nextQuestionId]);
+      this.router.navigate(['/practice',this.question.nextQuestionId]);
     }
 
     submitAnswer(){

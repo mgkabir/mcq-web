@@ -7,7 +7,7 @@ import { routing } from './app.routes';
 
 import { AppComponent }  from './app.component';
 
-import { QuestionDetailsComponent } from './question/question-details.component';
+import { QuestionDetailsComponent } from './practice/question-details.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './home/page-not-found.component';
 
