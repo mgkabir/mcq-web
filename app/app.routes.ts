@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { QuestionDetailsComponent } from './question/question-details.component';
 import {HomeComponent} from './home/home.component';
+import {PageNotFoundComponent} from './home/page-not-found.component';
 
 // Route config let's you map routes to components
 const routes: Routes = [
@@ -13,12 +14,14 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-
-  // map '/' to '/persons' as our default route
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path:'**',
+    component: PageNotFoundComponent
   },
 ];
 

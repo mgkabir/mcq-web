@@ -9,10 +9,11 @@ import { AppComponent }  from './app.component';
 
 import { QuestionDetailsComponent } from './question/question-details.component';
 import {HomeComponent} from './home/home.component';
+import {PageNotFoundComponent} from './home/page-not-found.component';
 
 @NgModule({
   imports: [ BrowserModule, routing, FormsModule, HttpModule],
-  declarations: [ AppComponent, QuestionDetailsComponent, HomeComponent],
+  declarations: [ AppComponent, QuestionDetailsComponent, HomeComponent, PageNotFoundComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
