@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path:'**',
     component: PageNotFoundComponent
-  },
+  }
 ];
 
 export const routing = RouterModule.forRoot(routes);
