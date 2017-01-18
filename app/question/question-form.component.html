@@ -1,39 +1,40 @@
 <div class="container">
   <h3>{{formTitle}}</h3>
-  <form>
+  <form #f="ngForm">
     <div class="form-group">
       <label for="questionText">Question Text</label>
-      <input type="text" [(ngModel)]="question.questionText" name="questionText" class="form-control" id="questionText" required>
+      <input type="text" [(ngModel)]="question.questionText" name="questionText"
+      class="form-control" id="questionText" required>
     </div>
 
     <div class="form-group">
       <div>
         <label>Option 1</label>
-        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1">
+        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 2</label>
-        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2">
+        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 3</label>
-        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3">
+        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 4</label>
-        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4">
+        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" required>
       </div>
     </div>
 
     <div class="form-group">
       <label for="correctOption">Select Correct Option</label>
-      <select class="form-control" id="correctOption" required>
+      <select class="form-control" id="correctOption" (change)="onChange($event.target.value)" required>
           <option *ngFor="let option of question.options" [value]="option.optionId">{{option.optionText}}</option>
       </select>
     </div>
@@ -46,17 +47,4 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-
-{{diagnostic}}
-
-<!--
-
-<div class="radio" *ngFor="let opt of question.options">
-    <label >
-        <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
-              value="{{opt.optionId}}" id="answer" required>
-        {{opt.optionText}}
-    </label>
-</div>
-
--->
+<p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p>

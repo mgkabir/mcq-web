@@ -15,6 +15,19 @@ question: QuestionModel = new QuestionModel();
 
 
 
+onChange(idx:number){
+  console.log("selection changed to > "+idx);
+  for(let opt of this.question.options){
+    console.log(opt.correct);
+    if(opt.optionId == idx){
+      opt.correct = true;
+    }else{
+      opt.correct = false;
+    }
+  }
+}
+
+
 get diagnostic(){
   return JSON.stringify(this.question);
 }

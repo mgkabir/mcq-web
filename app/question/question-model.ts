@@ -1,17 +1,17 @@
 export class QuestionModel {
     questionId: number;
-    questionText: string;
-    answerText: string = "Put explanation of Correct answer here .. ";
+    questionText: string = "Question text here ...";
+    answerText: string = "Explanation of answer here .. ";
     options: Option[] = [
-      {"optionId":1,"optionText":"Option 01","currect":false},
-      {"optionId":2,"optionText":"Option 02","currect":false},
-      {"optionId":3,"optionText":"Option 03","currect":true},
-      {"optionId":4,"optionText":"Option 04","currect":false}
+      {"optionId":1,"optionText":"Option 01", "correct":false},
+      {"optionId":2,"optionText":"Option 02", "correct":false},
+      {"optionId":3,"optionText":"Option 03", "correct":false},
+      {"optionId":4,"optionText":"Option 04", "correct":false}
     ];
 }
 
 export class Option{
   optionId: number;
   optionText: string;
-  currect: boolean;
+  correct: boolean;
 }
