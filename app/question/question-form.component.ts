@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { QuestionService } from '../practice/question.service';
+import { Response } from '@angular/http';
+import { QuestionManageService } from './question-manage.service';
 import {QuestionModel} from './question-model';
 
 @Component({
@@ -10,10 +11,11 @@ import {QuestionModel} from './question-model';
 export class QuestionFormComponent{
 
 formTitle: string = "Question Add Form";
-
+submitMsg: string = "";
 question: QuestionModel = new QuestionModel();
 
-
+constructor(private questionManageService: QuestionManageService){
+}
 
 onChange(idx:number){
   console.log("selection changed to > "+idx);
@@ -27,6 +29,18 @@ onChange(idx:number){
   }
 }
 
+/*Call this method when user Submits to Add a Question*/
+
+addQuestion(){
+  this.questionManageService
+      .addQuestion(this.question)
+      .subscribe(
+        (r: Response) => {
+          console.log(r.json());
+          this.submitMsg = "Successful";
+        }
+      );
+}
 
 get diagnostic(){
   return JSON.stringify(this.question);

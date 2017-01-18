@@ -1,6 +1,7 @@
 <div class="container">
   <h3>{{formTitle}}</h3>
-  <form #f="ngForm">
+  <p class="text-info">{{submitMsg}}</p>
+  <form (ngSubmit)="addQuestion()" #f="ngForm">
     <div class="form-group">
       <label for="questionText">Question Text</label>
       <input type="text" [(ngModel)]="question.questionText" name="questionText"
