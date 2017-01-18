@@ -1,1 +1,62 @@
-{{qFormMsg}}
+<div class="container">
+  <h3>{{formTitle}}</h3>
+  <form>
+    <div class="form-group">
+      <label for="questionText">Question Text</label>
+      <input type="text" [(ngModel)]="question.questionText" name="questionText" class="form-control" id="questionText" required>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label>Option 1</label>
+        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1">
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label>Option 2</label>
+        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2">
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label>Option 3</label>
+        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3">
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label>Option 4</label>
+        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="correctOption">Select Correct Option</label>
+      <select class="form-control" id="correctOption" required>
+          <option *ngFor="let option of question.options" [value]="option.optionId">{{option.optionText}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="answerText">Explanation for Answer</label>
+      <textarea [(ngModel)]="question.answerText" name="answerText" class="form-control" id="answerText"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+{{diagnostic}}
+
+<!--
+
+<div class="radio" *ngFor="let opt of question.options">
+    <label >
+        <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
+              value="{{opt.optionId}}" id="answer" required>
+        {{opt.optionText}}
+    </label>
+</div>
+
+-->
