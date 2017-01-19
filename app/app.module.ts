@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { routing } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent }  from './app.component';
 
@@ -13,7 +13,7 @@ import {PageNotFoundComponent} from './home/page-not-found.component';
 import {QuestionFormComponent} from './question/question-form.component';
 
 @NgModule({
-  imports: [ BrowserModule, routing, FormsModule, HttpModule],
+  imports: [ BrowserModule, AppRoutingModule, FormsModule, HttpModule],
   declarations: [ AppComponent, QuestionDetailsComponent,
         HomeComponent, PageNotFoundComponent, QuestionFormComponent],
   bootstrap: [ AppComponent ]
