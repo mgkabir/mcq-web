@@ -1,24 +1,23 @@
 <div class="well">
-  <h4>{{formTitle}}</h4>
   <p class="text-info">{{submitMsg}}</p>
   <form (ngSubmit)="addQuestion()" #f="ngForm">
     <div class="form-group">
       <label for="questionText">Question Text</label>
       <textarea [(ngModel)]="question.questionText" name="questionText"
-      class="form-control" id="questionText" required></textarea>
+      class="form-control" id="questionText" placeholder="Question text" required></textarea>
     </div>
 
     <div class="row">
       <div class="col-md-6 form-group">
         <div>
           <label>Answer Option 1</label>
-          <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" class="form-control" required>
+          <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" class="form-control" placeholder="Option 1" required>
         </div>
       </div>
       <div class="col-md-6 form-group">
         <div>
           <label>Answer Option 2</label>
-          <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" class="form-control" required>
+          <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" class="form-control" placeholder="Option 2" required>
         </div>
       </div>
     </div>
@@ -26,13 +25,13 @@
       <div class="col-md-6 form-group">
         <div>
           <label>Answer Option 3</label>
-          <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" class="form-control" required>
+          <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" class="form-control" placeholder="Option 3" required>
         </div>
       </div>
       <div class="col-md-6 form-group">
         <div>
           <label>Answer Option 4</label>
-          <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" class="form-control" required>
+          <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" class="form-control" placeholder="Option 4" required>
         </div>
       </div>
     </div>
@@ -45,10 +44,10 @@
     </div>
     <div class="form-group">
       <label for="answerText">Explanation for Answer</label>
-      <textarea [(ngModel)]="question.answerText" name="answerText" class="form-control" id="answerText"></textarea>
+      <textarea [(ngModel)]="question.answerText" name="answerText" class="form-control" placeholder="Answer explanation" id="answerText"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Save Question</button>
   </form>
 </div>
 <!-- p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->
