@@ -6,13 +6,15 @@ import { Component} from '@angular/core';
   selector: 'page-not-found',
   template:
   `
-    <h3>Page Not Found</h3>
-    <p class="text-info">Looking for something else ? You may go {{here}}</p>
+    <div class="well">
+      <h3>Page Not Found</h3>
+      <p class="text-info">Looking for something else ? You may visit <a routerLink="/home" routerLinkActive="active">Home</a></p>
+    </div>
   `
 })
 
 export class PageNotFoundComponent{
 
-here: string =  'Here';
+
 
 }

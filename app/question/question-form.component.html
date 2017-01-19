@@ -1,5 +1,5 @@
 <div class="well">
-  <h3>{{formTitle}}</h3>
+  <h4>{{formTitle}}</h4>
   <p class="text-info">{{submitMsg}}</p>
   <form (ngSubmit)="addQuestion()" #f="ngForm">
     <div class="form-group">
@@ -8,31 +8,34 @@
       class="form-control" id="questionText" required></textarea>
     </div>
 
-    <div class="form-group">
-      <div>
-        <label>Option 1</label>
-        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" class="form-control" required>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <div>
+          <label>Answer Option 1</label>
+          <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <div>
+          <label>Answer Option 2</label>
+          <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" class="form-control" required>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <div>
-        <label>Option 2</label>
-        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" class="form-control" required>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <div>
+          <label>Answer Option 3</label>
+          <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <div>
+          <label>Answer Option 4</label>
+          <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" class="form-control" required>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <div>
-        <label>Option 3</label>
-        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" class="form-control" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label>Option 4</label>
-        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" class="form-control" required>
-      </div>
-    </div>
-
     <div class="form-group">
       <label for="correctOption">Select Correct Option</label>
       <select class="form-control" id="correctOption" (change)="onChange($event.target.value)" required>
@@ -45,7 +48,7 @@
       <textarea [(ngModel)]="question.answerText" name="answerText" class="form-control" id="answerText"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
 <!-- p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->

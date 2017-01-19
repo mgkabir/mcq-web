@@ -5,17 +5,23 @@ import {QuestionManageService} from './question/question-manage.service';
 @Component({
   selector: 'mcq-web',
   template: `
-  <h2> {{title}} </h2>
-
-  <nav>
-    <div class="well">
-      <a routerLink="home" routerLinkActive="active">Home</a> |
-      <a routerLink="practice/6" routerLinkActive="active">Do Practice</a> |
-      <a routerLink="question" routerLinkActive="active">Manage Question</a>
-    </div>
+  <div class="container-fluid">
+  <h2 class="text-info"> {{title}} </h2>
+  <nav class="navbar navbar-light bg-faded">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a routerLink="home" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="practice/6" routerLinkActive="active">Do Practice</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="question" routerLinkActive="active">Manage Question</a>
+      </li>
+    </ul>
   </nav>
-
-  <router-outlet>
+  <router-outlet></router-outlet>
+  </div>
   `,
   providers: [QuestionService, QuestionManageService]
 })
