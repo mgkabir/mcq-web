@@ -1,37 +1,43 @@
-<!-- Show Question and Options -->
-<section *ngIf="question">
-  <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
 
-        <h3>Question # {{question.questionId}}</h3>
-        <p class="text-info">{{question.questionText}}</p>
-        <div>
-          <label for="answer">Select Best One from options below</label>
-          <div class="radio" *ngFor="let opt of question.options">
-              <label >
-                  <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
-                        value="{{opt.optionId}}" id="answer" required>
-                  {{opt.optionText}}
-              </label>
+  <!-- Show Question and Options -->
+  <section *ngIf="question">
+    <div class="well">
+    <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
+
+          <h3>Question # {{question.questionId}}</h3>
+          <p class="text-info">{{question.questionText}}</p>
+          <div>
+            <label for="answer">Select Best One from options below</label>
+            <div class="radio" *ngFor="let opt of question.options">
+                <label >
+                    <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
+                          value="{{opt.optionId}}" id="answer" required>
+                    {{opt.optionText}}
+                </label>
+            </div>
           </div>
-        </div>
-        <div *ngIf="answerSubmitted && !question.isAnswerCorrect">
-            <button type="submit" class="btn btn-warning">Try Again</button>
-        </div>
-        <div *ngIf="!answerSubmitted">
-          <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit</button>
-        </div>
-  </form>
-<section>
+          <div *ngIf="answerSubmitted && !question.isAnswerCorrect">
+              <button type="submit" class="btn btn-warning">Try Again</button>
+          </div>
+          <div *ngIf="!answerSubmitted">
+            <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit</button>
+          </div>
+    </form>
+    </div>
+  <section>
 
-<!-- Show response to the submission-->
-<section *ngIf="answerSubmitted">
-  <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
-    <div *ngIf="question.isAnswerCorrect">
-      <button type="submit" class="btn btn-primary">Next, Please !</button>
-      <p class="text-success">Correct Answer !</p>
+
+  <!-- Show response to the submission-->
+  <section *ngIf="answerSubmitted">
+    <div class="jumbotron">
+    <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
+      <div *ngIf="question.isAnswerCorrect">
+        <button type="submit" class="btn btn-primary">Next, Please !</button>
+        <p class="text-success">Correct Answer !</p>
+      </div>
+      <div *ngIf="!question.isAnswerCorrect">
+        <p class="text-danger">Wrong Answer !</p>
+      </div>
+    </form>
     </div>
-    <div *ngIf="!question.isAnswerCorrect">
-      <p class="text-danger">Wrong Answer !</p>
-    </div>
-  </form>
-</section>
+  </section>

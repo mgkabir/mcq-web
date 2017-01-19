@@ -1,4 +1,4 @@
-<div class="container">
+<div class="well">
   <h3>{{formTitle}}</h3>
   <p class="text-info">{{submitMsg}}</p>
   <form (ngSubmit)="addQuestion()" #f="ngForm">
@@ -36,10 +36,10 @@
     <div class="form-group">
       <label for="correctOption">Select Correct Option</label>
       <select class="form-control" id="correctOption" (change)="onChange($event.target.value)" required>
+          <option value=""> ===> Please Select One <=== </option>
           <option *ngFor="let option of question.options" [value]="option.optionId">{{option.optionText}}</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="answerText">Explanation for Answer</label>
       <textarea [(ngModel)]="question.answerText" name="answerText" class="form-control" id="answerText"></textarea>

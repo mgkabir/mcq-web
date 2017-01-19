@@ -6,12 +6,15 @@ import {QuestionManageService} from './question/question-manage.service';
   selector: 'mcq-web',
   template: `
   <h2> {{title}} </h2>
-  <hr>
+
   <nav>
-    <a routerLink="home" routerLinkActive="active">Home</a> |
-    <a routerLink="practice/6" routerLinkActive="active">Do Practice</a> |
-    <a routerLink="question" routerLinkActive="active">Manage Question</a>
+    <div class="well">
+      <a routerLink="home" routerLinkActive="active">Home</a> |
+      <a routerLink="practice/6" routerLinkActive="active">Do Practice</a> |
+      <a routerLink="question" routerLinkActive="active">Manage Question</a>
+    </div>
   </nav>
+
   <router-outlet>
   `,
   providers: [QuestionService, QuestionManageService]
