@@ -4,32 +4,32 @@
   <form (ngSubmit)="addQuestion()" #f="ngForm">
     <div class="form-group">
       <label for="questionText">Question Text</label>
-      <input type="text" [(ngModel)]="question.questionText" name="questionText"
-      class="form-control" id="questionText" required>
+      <textarea [(ngModel)]="question.questionText" name="questionText"
+      class="form-control" id="questionText" required></textarea>
     </div>
 
     <div class="form-group">
       <div>
         <label>Option 1</label>
-        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" required>
+        <input type="text" [(ngModel)]="question.options[0].optionText" name="option1" class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 2</label>
-        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" required>
+        <input type="text" [(ngModel)]="question.options[1].optionText" name="option2" class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 3</label>
-        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" required>
+        <input type="text" [(ngModel)]="question.options[2].optionText" name="option3" class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <div>
         <label>Option 4</label>
-        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" required>
+        <input type="text" [(ngModel)]="question.options[3].optionText" name="option4" class="form-control" required>
       </div>
     </div>
 
@@ -48,4 +48,4 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-<p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p>
+<!-- p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->
