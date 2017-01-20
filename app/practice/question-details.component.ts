@@ -48,6 +48,9 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(){
+      /* Not necessary to unsubscribe but a good practice.
+      When subscribing to an observable in a component, you almost always arrange to unsubscribe 
+      when the component is destroyed. The ActivatedRoute observables are among the exceptions. */
         this.sub.unsubscribe();
     }
 /*
