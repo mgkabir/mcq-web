@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Response } from '@angular/http';
 import { QuestionManageService } from './question-manage.service';
-import {QuestionModel} from './question-model';
+import { QuestionModel } from './question-model';
 
 @Component({
   moduleId: module.id,

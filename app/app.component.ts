@@ -10,13 +10,13 @@ import {QuestionManageService} from './question/question-manage.service';
   <nav class="navbar navbar-light bg-faded">
     <ul class="nav navbar-nav">
       <li class="nav-item">
-        <a routerLink="home" routerLinkActive="text-uppercase text-success">Home</a>
+        <a routerLink="home" routerLinkActive="text-uppercase text-success">MCQ Home</a>
       </li>
       <li class="nav-item">
         <a routerLink="practice/6" routerLinkActive="text-uppercase text-success">Do Practice</a>
       </li>
       <li class="nav-item">
-        <a routerLink="question" routerLinkActive="text-uppercase text-success">Manage Question</a>
+        <a routerLink="questions" routerLinkActive="text-uppercase text-success">Question Home</a>
       </li>
     </ul>
   </nav>
