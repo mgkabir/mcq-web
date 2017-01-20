@@ -14,9 +14,8 @@ export class QuestionManageService{
     addQuestion(question: QuestionModel) : Observable<Response>{
       console.log(`addQuestion() : qText : ${question.questionText}`);
       return this.http
-        .post(`${this.baseUrl}/addQuestion`,JSON.stringify(question), {headers: this.getHeaders()});
+        .post(`${this.baseUrl}/questions`,JSON.stringify(question), {headers: this.getHeaders()});
     }
-
 
   private getHeaders(){
     let headers = new Headers();
