@@ -1,0 +1,26 @@
+<div class="well">
+  <section *ngIf="question">
+      <div class="row">
+        <blockquote>
+          <footer>Question # {{question.questionId}}</footer>
+          <p>{{question.questionText}}</p>
+        </blockquote>
+      </div>
+      <div class="row" *ngFor="let opt of question.options">
+        <div class="col-md-2 text-right" >
+            <span *ngIf="opt.correct">*</span>{{opt.optionId}}
+        </div>
+        <div class="col-md-10" >
+          {{opt.optionText}}
+        </div>
+      </div>
+      <div class="row">
+        <blockquote class="blockquote-reverse">
+          <footer>{{question.answerText}}</footer>
+        </blockquote>
+      </div>
+    <p>
+      <button class="btn btn-primary" (click)="gotoQuestionList()">Question List</button>
+    </p>
+  </section>
+</div>

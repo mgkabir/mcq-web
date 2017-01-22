@@ -7,7 +7,7 @@ import { QuestionViewComponent }  from './question-view.component';
 
 const questionRoutes: Routes = [
   { path: 'questions',  component: QuestionListComponent },
-  { path: 'question/:id', component: QuestionViewComponent },
+  { path: 'questions/:id', component: QuestionViewComponent },
   { path: 'question-form', component: QuestionFormComponent }
 ];
 

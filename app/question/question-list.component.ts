@@ -10,26 +10,22 @@ import { QuestionModel } from './question-model';
   template:
   `
     <div class="well">
-
-    <section>
         <section *ngIf="isLoading && !errorMessage">
         Retrieving Question data...
         </section>
           <ul>
-            <li *ngFor="let q of questions">
+            <li class="list-unstyled" *ngFor="let q of questions">
+                {{q.questionId}}.
                 <a href="#" [routerLink]="['/questions', q.questionId]">
-              {{q.questionText}}
-              </a>
+                  {{q.questionText}}
+                </a>
             </li>
           </ul>
           <section *ngIf="errorMessage">
             {{errorMessage}}
           </section>
-      </section>
-
-
     </div>
-    <p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p>
+    <!--p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->
   `
 })
 
@@ -38,6 +34,7 @@ export class QuestionListComponent implements OnInit, OnDestroy{
   questions: QuestionModel[];
   errorMessage: string = '';
   isLoading: boolean = true;
+  sub:any;
 
   constructor(
     private router: Router,
@@ -46,7 +43,7 @@ export class QuestionListComponent implements OnInit, OnDestroy{
 
   ngOnInit(){
     console.log("ngOnItnit() called");
-    this.service.getQuestions()
+    this.sub = this.service.getQuestions()
       .subscribe(
           res => this.questions = res,
           err => this.errorMessage = err,
@@ -55,10 +52,9 @@ export class QuestionListComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(){
-    /* Not necessary to unsubscribe but a good practice.
-    When subscribing to an observable in a component, you almost always arrange to unsubscribe
-    when the component is destroyed. The ActivatedRoute observables are among the exceptions. */
-
+    /* When subscribing to an observable in a component, you almost always arrange to unsubscribe
+    when the component is destroyed. */
+    this.sub.unsubscribe();
   }
 
   get diagnostic(){
