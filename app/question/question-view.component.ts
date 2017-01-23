@@ -27,6 +27,15 @@ export class QuestionViewComponent implements OnInit, OnDestroy{
   gotoQuestionList(){
     this.router.navigate(['/questions']);
   }
+  /* Go back to next Question in the  List*/
+  gotoNextQuestion(){
+    this.router.navigate(['/questions',this.question.questionId+1]);
+  }
+  /* Go back to previous Question in the  List*/
+  gotoPreviousQuestion(){
+    this.router.navigate(['/questions',this.question.questionId-1]);
+  }
+
   ngOnInit(){
         this.subscription = this.route.params.subscribe(params => {
           let id = Number.parseInt(params['id']);
