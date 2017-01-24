@@ -12,11 +12,17 @@ export class QuestionManageService{
 
     /*POST operation for adding QuestionModel */
   addQuestion(question: QuestionModel) : Observable<Response>{
-    console.log(`addQuestion() : qText : ${question.questionText}`);
+    console.log(`addQuestion() : ${question.questionId} -- ${question.questionText}`);
     return this.http
       .post(`${this.baseUrl}/questions`,JSON.stringify(question), {headers: this.getContentTypeHeader()});
   }
 
+  /*PUT operation for updating QuestionModel */
+updateQuestion(question: QuestionModel) : Observable<Response>{
+  console.log(`updateQuestion() : ${question.questionId} -- ${question.questionText}`);
+  return this.http
+    .put(`${this.baseUrl}/questions`,JSON.stringify(question), {headers: this.getContentTypeHeader()});
+}
 
   getQuestions(): Observable<QuestionModel[]>{
     return this.http
@@ -28,15 +34,15 @@ export class QuestionManageService{
             })
         }
 
-      getQuestion(id: number): Observable<QuestionModel> {
-        console.log("Question ID : "+id);
-        return this.http
-          .get(`${this.baseUrl}/questions/${id}`, {headers: this.getAcceptHeader()})
-          .map(
-              (res: Response) =>{
-                return res.json();
-              });
-      }
+    getQuestion(id: number): Observable<QuestionModel> {
+      console.log("Question ID : "+id);
+      return this.http
+        .get(`${this.baseUrl}/questions/${id}`, {headers: this.getAcceptHeader()})
+        .map(
+            (res: Response) =>{
+              return res.json();
+            });
+    }
 
 
   private getAcceptHeader(){

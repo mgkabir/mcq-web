@@ -1,5 +1,5 @@
 export class QuestionModel {
-    questionId: number;
+    questionId: number = 0;
     questionText: string = "";
     answerText: string = "";
     options: Option[] = [

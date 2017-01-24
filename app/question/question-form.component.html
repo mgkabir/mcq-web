@@ -1,6 +1,6 @@
 <div class="well">
   <p class="text-info">{{submitMsg}}</p>
-  <form (ngSubmit)="addQuestion()" #f="ngForm">
+  <form (ngSubmit)="submitQuestion()" #f="ngForm">
     <div class="form-group">
       <label for="questionText">Question Text</label>
       <textarea [(ngModel)]="question.questionText" name="questionText"
@@ -48,6 +48,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Save Question</button>
+    <p class="text-info"> TODO : Remove diagnostic : {{question.questionId}} : {{question.questionText}}</p>
   </form>
 </div>
-<!-- p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->
