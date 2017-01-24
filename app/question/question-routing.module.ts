@@ -4,13 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuestionListComponent }  from './question-list.component';
 import { QuestionFormComponent }  from './question-form.component';
 import { QuestionViewComponent }  from './question-view.component';
+import { QuestionComponent }  from './question.component';
 
 const questionRoutes: Routes = [
-  { path: 'questions',  component: QuestionListComponent },
-  { path: 'questions/add', component: QuestionFormComponent },
-  { path: 'question-edit/:id', component: QuestionFormComponent },
-  { path: 'questions/:id', component: QuestionViewComponent }
-];
+  {
+    path: 'question',
+    component: QuestionComponent,
+    children: [
+        { path: '',  component: QuestionListComponent },
+        { path: 'view/:id', component: QuestionViewComponent },
+        { path: 'edit/:id', component: QuestionFormComponent },
+        { path: 'add', component: QuestionFormComponent }
+    ]
+   }
+ ];
 
 @NgModule({
   imports: [

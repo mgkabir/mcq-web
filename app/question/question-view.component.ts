@@ -25,13 +25,13 @@ export class QuestionViewComponent implements OnInit, OnDestroy{
 
   /* Go back to Question List*/
   gotoQuestionList(){
-    this.router.navigate(['/questions']);
+    this.router.navigate(['/question']); /* TODO :  use relative link. */ 
   }
-  /* Go back to next Question in the  List*/
+  /* Go back to next Question in the  List. Not being used at this moment*/
   gotoNextQuestion(){
     this.router.navigate(['/questions',this.question.questionId+1]);
   }
-  /* Go back to previous Question in the  List*/
+  /* Go back to previous Question in the  List. Not being used at this moment*/
   gotoPreviousQuestion(){
     this.router.navigate(['/questions',this.question.questionId-1]);
   }

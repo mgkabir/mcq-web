@@ -6,6 +6,7 @@ import { QuestionManageService } from './question-manage.service';
 import { QuestionFormComponent } from './question-form.component';
 import { QuestionListComponent } from './question-list.component';
 import { QuestionViewComponent } from './question-view.component';
+import { QuestionComponent } from './question.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { QuestionViewComponent } from './question-view.component';
   declarations: [
     QuestionListComponent,
     QuestionFormComponent,
-    QuestionViewComponent
+    QuestionViewComponent,
+    QuestionComponent
   ],
   providers: [
     QuestionManageService

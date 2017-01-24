@@ -16,7 +16,7 @@ import {QuestionManageService} from './question/question-manage.service';
         <a routerLink="practice/6" routerLinkActive="text-uppercase text-success">Do Practice</a>
       </li>
       <li class="nav-item">
-        <a routerLink="questions" routerLinkActive="text-uppercase text-success">Question Home</a>
+        <a routerLink="question" routerLinkActive="text-uppercase text-success">Question Home</a>
       </li>
     </ul>
   </nav>
