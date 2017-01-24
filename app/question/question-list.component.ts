@@ -9,21 +9,28 @@ import { QuestionModel } from './question-model';
   selector: 'question-list',
   template:
   `
-    <div class="well">
-        <section *ngIf="isLoading && !errorMessage">
+    <div class="text-center">
+      <section *ngIf="isLoading && !errorMessage">
         Retrieving Question data...
-        </section>
-          <ul>
-            <li class="list-unstyled" *ngFor="let q of questions">
-                {{q.questionId}}.
-                <a href="#" [routerLink]="['/questions', q.questionId]">
-                  {{q.questionText}}
-                </a>
-            </li>
-          </ul>
-          <section *ngIf="errorMessage">
-            {{errorMessage}}
-          </section>
+      </section>
+      <section *ngIf="errorMessage">
+        {{errorMessage}}
+      </section>
+    </div>
+    <div class="text-right">
+      <a href="#" class="btn btn-default" [routerLink]="['/questions/add']">Add Question</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-condensed table-bordered">
+          <tr><th> # </th><th>Question Description</th></tr>
+          <tr *ngFor="let q of questions">
+            <td>{{q.questionId}}</td>
+            <td><a href="#" [routerLink]="['/questions', q.questionId]">{{q.questionText}}</a></td>
+          </tr>
+        </table>
+    </div>
+    <div class="text-right">
+      <a href="#" class="btn btn-default" [routerLink]="['/questions/add']">Add Question</a>
     </div>
     <!--p class="text-info"> TODO : Remove diagnostic : {{diagnostic}} </p-->
   `

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Response } from '@angular/http';
 import { QuestionManageService } from './question-manage.service';
 import { QuestionModel } from './question-model';
@@ -8,15 +9,36 @@ import { QuestionModel } from './question-model';
   selector: 'question-form',
   templateUrl: './question-form.component.html'
 })
-export class QuestionFormComponent{
+export class QuestionFormComponent implements OnInit, OnDestroy{
 
   formTitle: string = "Question Add Form";
   submitMsg: string = "";
   question: QuestionModel = new QuestionModel();
+  subscription: any;
+  errorMessage: string = '';
+  isLoading: boolean = true;
 
-  constructor(private questionManageService: QuestionManageService){
-  }
+  constructor(
+              private questionManageService: QuestionManageService,
+              private router: Router,
+              private route: ActivatedRoute){}
 
+ngOnInit(){
+    this.subscription = this.route.params.subscribe(params => {
+    let id = Number.parseInt(params['id']);
+    console.log("QuestionFormComponent.ngOnItnit() QID :"+id);
+    this.questionManageService
+      .getQuestion(id)
+      .subscribe(
+          res => this.question = res,
+          err => this.errorMessage = err,
+          ()  => this.isLoading = false);
+  });
+}
+
+ngOnDestroy(){
+
+}
   onChange(idx:number){
     console.log("selection changed to > "+idx);
     for(let opt of this.question.options){

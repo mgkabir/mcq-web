@@ -7,8 +7,9 @@ import { QuestionViewComponent }  from './question-view.component';
 
 const questionRoutes: Routes = [
   { path: 'questions',  component: QuestionListComponent },
-  { path: 'questions/:id', component: QuestionViewComponent },
-  { path: 'question-form', component: QuestionFormComponent }
+  { path: 'questions/add', component: QuestionFormComponent },
+  { path: 'question-edit/:id', component: QuestionFormComponent },
+  { path: 'questions/:id', component: QuestionViewComponent }
 ];
 
 @NgModule({
