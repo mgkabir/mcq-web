@@ -6,7 +6,9 @@ import { QuestionManageService } from './question-manage.service';
 import { QuestionFormComponent } from './question-form.component';
 import { QuestionListComponent } from './question-list.component';
 import { QuestionViewComponent } from './question-view.component';
+import { QuestionHomeComponent }  from './question-home.component';
 import { QuestionComponent } from './question.component';
+
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { QuestionComponent } from './question.component';
     QuestionListComponent,
     QuestionFormComponent,
     QuestionViewComponent,
+    QuestionHomeComponent,
     QuestionComponent
   ],
   providers: [

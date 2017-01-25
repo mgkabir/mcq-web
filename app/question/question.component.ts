@@ -4,13 +4,16 @@ import {Component} from '@angular/core';
   template: `
 
     <div class="row">
-      <div class="col-md-2">
-        <a href="#" [routerLink]="['add']">Add Question</a>
+      <div class="col-md-1">
+        <!-- a routerLinkActive="text-uppercase text-success" [routerLink]="['./']">Question Home</a-->
       </div>
       <div class="col-md-2">
-        <a href="#"  [routerLink]="['/question']">List Question</a>
+        <a routerLinkActive="text-uppercase text-success" [routerLink]="['add']">Add Question</a>
       </div>
-      <div class="col-md-8"></div>
+      <div class="col-md-2">
+        <a routerLinkActive="text-uppercase text-success" [routerLink]="['list']">List Question</a>
+      </div>
+      <div class="col-md-7"></div>
     </div>
     <router-outlet></router-outlet>
   `

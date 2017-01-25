@@ -22,7 +22,7 @@ import { QuestionModel } from './question-model';
           <tr><th> # </th><th>Question Description</th></tr>
           <tr *ngFor="let q of questions">
             <td>{{q.questionId}}</td>
-            <td><a href="#" [routerLink]="['view', q.questionId]">{{q.questionText}}</a></td>
+            <td><a href="#" [routerLink]="['../view', q.questionId]">{{q.questionText}}</a></td>
           </tr>
         </table>
     </div>
