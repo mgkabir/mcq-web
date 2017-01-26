@@ -10,6 +10,18 @@ export class QuestionService{
   constructor(private http:Http){
     }
 
+    getRandomQuestion(){
+      return this.http
+        .get(`${this.baseUrl}/question`, {headers: this.getHeaders()})
+        .map(function(res:Response){
+          return <Question>({
+            questionId:res.json().questionId,
+            questionText: res.json().questionText,
+            options:res.json().options,
+          });
+        });
+    }
+    /* using getRandomQuestion() instead
     get(id: number): Observable<Question> {
       console.log("Question ID : "+id);
       return this.http
@@ -22,6 +34,7 @@ export class QuestionService{
           });
         });
     }
+    */
     /*Submits selcted option */
     submitAnswer(question: Question) : Observable<Response>{
       console.log(`save() : qId : ${question.questionId} : Selected OptionId : ${question.selectedOptionId}`);

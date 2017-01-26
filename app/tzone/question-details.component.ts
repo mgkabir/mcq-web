@@ -12,7 +12,7 @@ import { QuestionService } from './question.service';
 })
 export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
-    sub: any;
+
     answerSubmitted: boolean = false;
 
     constructor(private questionService: QuestionService,
@@ -22,7 +22,9 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
 
     nextQuestion(){
       this.answerSubmitted = false;
-      this.router.navigate(['/practice',this.question.nextQuestionId]);
+      this.questionService
+        .getRandomQuestion()
+        .subscribe(q => this.question = q);
     }
 
     submitAnswer(){
@@ -31,26 +33,21 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
           .subscribe(
             (r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;
-              this.question.nextQuestionId = r.json().nextQuestionId;
             }
           );
           this.answerSubmitted = true;
     }
 
     ngOnInit(){
-        this.sub = this.route.params.subscribe(params => {
-          let id = Number.parseInt(params['id']);
           this.questionService
-            .get(id)
+            .getRandomQuestion()
             .subscribe(q => this.question = q);
-        });
     }
 
     ngOnDestroy(){
       /* Not necessary to unsubscribe but a good practice.
       When subscribing to an observable in a component, you almost always arrange to unsubscribe
       when the component is destroyed. The ActivatedRoute observables are among the exceptions. */
-        this.sub.unsubscribe();
     }
 /*
     get diagnostic(){

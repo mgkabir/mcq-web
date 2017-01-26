@@ -11,7 +11,7 @@ const tzoneRoutes: Routes = [
     component: TZoneComponent,
     children: [
         { path: '',  component: TZoneHomeComponent },
-        { path: 'practice/:id', component: QuestionDetailsComponent }
+        { path: 'practice', component: QuestionDetailsComponent }
     ]
   }
  ];

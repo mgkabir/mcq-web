@@ -8,10 +8,10 @@ import {Component} from '@angular/core';
         <!-- a routerLinkActive="text-uppercase text-success" [routerLink]="['./']">Question Home</a-->
       </div>
       <div class="col-md-2">
-        <a routerLinkActive="text-uppercase text-success" [routerLink]="['add']">Practice</a>
+        <a routerLinkActive="text-uppercase text-success" [routerLink]="['practice']">Practice</a>
       </div>
       <div class="col-md-2">
-        <a routerLinkActive="text-uppercase text-success" [routerLink]="['list']">Timed Test</a>
+        <a routerLinkActive="text-uppercase text-success" [routerLink]="['timedtest']">Timed Test</a>
       </div>
       <div class="col-md-7"></div>
     </div>

@@ -4,5 +4,4 @@ export class Question{
   options: string[];
   selectedOptionId: number;
   isAnswerCorrect: boolean;
-  nextQuestionId: number;
 }
