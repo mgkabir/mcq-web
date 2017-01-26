@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {QuestionService} from './practice/question.service';
+import {QuestionService} from './tzone/question.service';
 import {QuestionManageService} from './question/question-manage.service';
 
 @Component({
@@ -13,7 +13,7 @@ import {QuestionManageService} from './question/question-manage.service';
         <a routerLink="home" routerLinkActive="text-uppercase text-success">MCQ Home</a>
       </li>
       <li class="nav-item">
-        <a routerLink="practice/6" routerLinkActive="text-uppercase text-success">Do Practice</a>
+        <a routerLink="tzone" routerLinkActive="text-uppercase text-success">Test Zone</a>
       </li>
       <li class="nav-item">
         <a routerLink="question" routerLinkActive="text-uppercase text-success">Question Center</a>
@@ -26,5 +26,5 @@ import {QuestionManageService} from './question/question-manage.service';
   providers: [QuestionService, QuestionManageService]
 })
 export class AppComponent {
-  title:string = 'MCQ Web';
+  title:string = 'MCQ Web Application';
 }
