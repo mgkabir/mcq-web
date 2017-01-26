@@ -12,8 +12,9 @@ import { QuestionService } from './question.service';
 })
 export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
-
     answerSubmitted: boolean = false;
+    noCorrect: number = 0;
+    noWrong: number = 0;
 
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
@@ -33,6 +34,11 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
           .subscribe(
             (r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;
+              if(this.question.isAnswerCorrect){
+                  this.noCorrect++;
+              }else{
+                  this.noWrong++;
+              }
             }
           );
           this.answerSubmitted = true;

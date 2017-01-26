@@ -1,42 +1,37 @@
-
-  <!-- Show Question and Options -->
-  <section *ngIf="question">
-    <div class="well">
-    <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
-
-          <h3>Question # {{question.questionId}}</h3>
-          <p class="text-info">{{question.questionText}}</p>
-          <div>
-            <label for="answer">Select Best One from options below</label>
-            <div class="radio" *ngFor="let opt of question.options">
-                <label >
-                    <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
-                          value="{{opt.optionId}}" id="answer" required>
-                    {{opt.optionText}}
-                </label>
+<div class="row well">
+  <div class="col-md-6"> <!-- Question and Options starts -->
+    <section *ngIf="question">
+      <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
+            <h4>Question # {{question.questionId}}</h4>
+            <p class="text-info">{{question.questionText}}</p>
+            <div>
+              <div class="radio" *ngFor="let opt of question.options">
+                  <label >
+                      <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
+                            value="{{opt.optionId}}" id="answer" required>
+                      {{opt.optionText}}
+                  </label>
+              </div>
             </div>
-          </div>
-          <div *ngIf="answerSubmitted && !question.isAnswerCorrect">
-              <button type="submit" class="btn btn-warning">Try Again</button>
-          </div>
-          <div *ngIf="!answerSubmitted">
-            <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit</button>
-          </div>
-    </form>
-    </div>
-  <section>
-
-  <!-- Show response to the submission-->
-  <section *ngIf="answerSubmitted">
-    <div class="jumbotron">
-    <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
-      <div *ngIf="question.isAnswerCorrect">
-        <button type="submit" class="btn btn-primary">Next, Please !</button>
-        <p class="text-success">Correct Answer !</p>
-      </div>
-      <div *ngIf="!question.isAnswerCorrect">
-        <p class="text-danger">Wrong Answer !</p>
-      </div>
-    </form>
-    </div>
-  </section>
+            <div *ngIf="!answerSubmitted">
+              <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit Choice</button>
+            </div>
+      </form>
+    </section>
+  </div> <!-- Question and Options ends -->
+  <div class="col-md-6"> <!-- Right / Wrong, Explanation here-->
+    <section *ngIf="answerSubmitted">
+      <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
+        <div *ngIf="question.isAnswerCorrect">
+          <p class="lead text-success">Correct Answer !</p>
+        </div>
+        <div *ngIf="!question.isAnswerCorrect">
+          <p class="lead text-danger">Wrong Answer !</p>
+        </div>
+        <div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div>
+        <p class="text-info">{{question.answerText}}</p>
+        <button type="submit" class="btn btn-primary">Next Question</button>
+      </form>
+    </section>
+  </div>
+</div>

@@ -18,6 +18,7 @@ export class QuestionService{
             questionId:res.json().questionId,
             questionText: res.json().questionText,
             options:res.json().options,
+            answerText: res.json().answerText,
           });
         });
     }
