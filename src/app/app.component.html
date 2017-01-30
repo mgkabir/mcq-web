@@ -1,11 +1,4 @@
-import { Component } from '@angular/core';
-import {QuestionService} from './tzone/question.service';
-import {QuestionManageService} from './question/question-manage.service';
-
-@Component({
-  selector: 'mcq-web',
-  template: `
-  <div class="container-fluid">
+<div class="container-fluid">
   <h2 class="text-info"> {{title}} </h2>
   <nav class="navbar navbar-light bg-faded">
     <ul class="nav navbar-nav">
@@ -22,9 +15,3 @@ import {QuestionManageService} from './question/question-manage.service';
   </nav>
   <router-outlet></router-outlet>
   </div>
-  `,
-  providers: [QuestionService, QuestionManageService]
-})
-export class AppComponent {
-  title:string = 'MCQ Web Application';
-}
