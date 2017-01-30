@@ -7,14 +7,6 @@ import { QuestionFormComponent } from './question/question-form.component';
 
 // Route config let's you map routes to components
 const appRoutes: Routes = [
-/*
-  {
-    path: 'practice/:id', component: QuestionDetailsComponent
-  },
-  */
-/*{
-    path: 'question', component: QuestionFormComponent
-  }, */
   {
     path: 'home', component: HomeComponent
   },
