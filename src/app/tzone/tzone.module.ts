@@ -6,7 +6,7 @@ import { QuestionService } from './question.service';
 import { QuestionDetailsComponent } from './question-details.component';
 import { TZoneComponent } from './tzone.component';
 import { TZoneHomeComponent } from './tzone-home.component';
-
+import { ModelTestComponent }  from './model-test.component';
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import { TZoneHomeComponent } from './tzone-home.component';
   declarations: [
     QuestionDetailsComponent,
     TZoneComponent,
-    TZoneHomeComponent
+    TZoneHomeComponent,
+    ModelTestComponent
   ],
   providers: [
     QuestionService

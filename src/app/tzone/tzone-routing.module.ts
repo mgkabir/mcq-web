@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuestionDetailsComponent } from './question-details.component';
 import { TZoneComponent }  from './tzone.component';
 import { TZoneHomeComponent }  from './tzone-home.component';
+import { ModelTestComponent }  from './model-test.component';
+import { AuthGuard } from '../auth-guard.service';
 
 
 const tzoneRoutes: Routes = [
@@ -11,7 +13,11 @@ const tzoneRoutes: Routes = [
     component: TZoneComponent,
     children: [
         { path: '',  component: TZoneHomeComponent },
-        { path: 'practice', component: QuestionDetailsComponent }
+        { path: 'practice', component: QuestionDetailsComponent },
+        { path: 'modeltest',
+          canActivate: [AuthGuard],
+          component: ModelTestComponent
+        }
     ]
   }
  ];
