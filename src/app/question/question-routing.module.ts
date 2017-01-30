@@ -13,13 +13,14 @@ const questionRoutes: Routes = [
   {
     path: 'question',
     component: QuestionComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard], /* Everything under this route are Guarded */
     children: [
       {
         path: '',
+        //canActivateChild: [AuthGuard], /* All children are Guarded */
         children: [
           { path: '',  component: QuestionHomeComponent },
-          { path: 'list',  component: QuestionListComponent },
+          { path: 'list', canActivate: [AuthGuard], component: QuestionListComponent }, /* ONLY list is Guarded*/
           { path: 'view/:id', component: QuestionViewComponent },
           { path: 'edit/:id', component: QuestionFormComponent },
           { path: 'add', component: QuestionFormComponent }
