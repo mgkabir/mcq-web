@@ -8,6 +8,7 @@ import { QuestionListComponent } from './question-list.component';
 import { QuestionViewComponent } from './question-view.component';
 import { QuestionHomeComponent }  from './question-home.component';
 import { QuestionComponent } from './question.component';
+import { AuthGuard } from '../auth-guard.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { QuestionComponent } from './question.component';
     QuestionComponent
   ],
   providers: [
-    QuestionManageService
+    QuestionManageService, AuthGuard
   ]
 })
 
