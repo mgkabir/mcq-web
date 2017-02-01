@@ -18,18 +18,24 @@ export class AuthService {
 
   login(loginInfo: LoginInfo): Observable<boolean> {
     return this.http
-      .post(`${this.baseUrl}/checklogin`,JSON.stringify(loginInfo), {headers: this.getContentTypeHeader()})
+      .post(`${this.baseUrl}/login`,JSON.stringify(loginInfo), {headers: this.getContentTypeHeader()})
       .map((res:Response)=>{
         console.log(`AuthService.login() : Response JSON : ${res.json()}`);
         this.isLoggedIn = res.json();
         return res.json();
       });
-    //return Observable.of(true).delay(2000).do(val => this.isLoggedIn = true);
   }
 
-  logout(): void {
-    this.isLoggedIn = false;
-  }
+  logout(): Observable<boolean> {
+    return this.http
+      .post(`${this.baseUrl}/logout`,JSON.stringify("loginInfo"),{headers: this.getContentTypeHeader()})
+      .map((res:Response)=>{
+          console.log(`AuthService.logout() : Response JSON : ${res.json()}`);
+          this.isLoggedIn = res.json();
+          console.log(`AuthService.logout() : isLoggedIn : ${this.isLoggedIn}`);
+          return res.json();
+      });
+}
 
   private getContentTypeHeader(){
     let headers = new Headers();
