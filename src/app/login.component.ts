@@ -23,6 +23,7 @@ import { AuthService } from './auth.service';
           </div>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
       </form>
+      <button class="btn btn-primary" (click)="logout()">Logout</button>
   </div>
     `
 })
@@ -53,31 +54,10 @@ export class LoginComponent {
               }
           });
   }
-/*
-  login() {
-    this.message = 'Trying to log In ...';
-    this.authService.login(this.loginInfo.userName,this.loginInfo.password)
-      .subscribe((r) => {
-          this.setMessage();
-          console.log(`logIn called : ${r}`);
-          if (this.authService.isLoggedIn) {
-              // Get the redirect URL from our auth service. If no redirect has been set, use the default
-              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/home';
-              // Redirect the user
-              this.router.navigate([redirect]);
-            }
-          });
-      }
-      */
-/*
-  logout() {
-      this.authService.logout().subscribe((r)=>{
-      console.log(`logOut called : ${r}`);
-      this.setMessage();
-      this.router.navigate(['home']);
-    });
+
+  logout(){
+    this.authService.logout();
   }
-  */
 }
 
 export class LoginInfo {

@@ -44,34 +44,13 @@ export class AuthService {
               }
           });
   }
-/*
-  login(loginInfo: LoginInfo): Observable<boolean> {
-    return this.http
-      .post(`${this.baseUrl}/login`,JSON.stringify(loginInfo), {headers: this.getContentTypeHeader()})
-      .map((res:Response)=>{
-        console.log(`AuthService.login() : Response JSON : ${res.json()}`);
-        this.isLoggedIn = res.json();
-        return res.json();
-      });
+
+  logout(): void {
+      // clear token remove user from local storage to log user out
+      this.token = null;
+      localStorage.removeItem('currentUser');
   }
-*/
-logout(): void {
-    // clear token remove user from local storage to log user out
-    this.token = null;
-    localStorage.removeItem('currentUser');
-}
-/*
-  logout(): Observable<boolean> {
-    return this.http
-      .post(`${this.baseUrl}/logout`,JSON.stringify("loginInfo"),{headers: this.getContentTypeHeader()})
-      .map((res:Response)=>{
-          console.log(`AuthService.logout() : Response JSON : ${res.json()}`);
-          this.isLoggedIn = res.json();
-          console.log(`AuthService.logout() : isLoggedIn : ${this.isLoggedIn}`);
-          return res.json();
-      });
-}
-*/
+
   private getContentTypeHeader(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

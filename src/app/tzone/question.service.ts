@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+import { Http, RequestOptions, Response, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Question } from './question';
+import {AuthService} from '../auth.service';
 
 @Injectable()
 export class QuestionService{
 
   private baseUrl:string = 'http://localhost:8080';
-  constructor(private http:Http){
+  constructor(private http:Http, private authService:AuthService){
     }
 
     getRandomQuestion(){
+      let headers = new Headers({ 'Authorization': this.authService.token });
+      let options = new RequestOptions({ headers: headers });
+
       return this.http
-        .get(`${this.baseUrl}/question`, {headers: this.getHeaders()})
+        .get(`${this.baseUrl}/question`, options)
         .map(function(res:Response){
           return <Question>({
             questionId:res.json().questionId,
@@ -22,31 +26,14 @@ export class QuestionService{
           });
         });
     }
-    /* using getRandomQuestion() instead
-    get(id: number): Observable<Question> {
-      console.log("Question ID : "+id);
-      return this.http
-        .get(`${this.baseUrl}/question/${id}`, {headers: this.getHeaders()})
-        .map(function(res:Response){
-          return <Question>({
-            questionId:res.json().questionId,
-            questionText: res.json().questionText,
-            options:res.json().options,
-          });
-        });
-    }
-    */
-    /*Submits selcted option */
+
+    /*Submits selected option */
     submitAnswer(question: Question) : Observable<Response>{
-      console.log(`save() : qId : ${question.questionId} : Selected OptionId : ${question.selectedOptionId}`);
+      console.log(`submitAnswer() : Token : ${this.authService.token} `);
+      let headers = new Headers({ 'Authorization': this.authService.token });
+      let options = new RequestOptions({ headers: headers });
       return this.http
-        .post(`${this.baseUrl}/question/${question.questionId}/option/${question.selectedOptionId}`, {headers: this.getHeaders()});
+        .post(`${this.baseUrl}/question/${question.questionId}/option/${question.selectedOptionId}`,"",options);
     }
 
-
-  private getHeaders(){
-    let headers = new Headers();
-    headers.append('Accept', 'application/json');
-    return headers;
-  }
 }
