@@ -8,6 +8,7 @@ import { AuthService }      from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
+
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -20,13 +21,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+      if (localStorage.getItem('currentUser')) {
+          // logged in so return true
+          return true;
+      }
+      // Store the attempted URL for redirecting
+      this.authService.redirectUrl = url;
+      // not logged in so redirect to login page
+      this.router.navigate(['/login']);
+      return false;
+    }
 
-    // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
-
-    // Navigate to the login page with extras
-    this.router.navigate(['/login']);
-    return false;
-  }
 }
