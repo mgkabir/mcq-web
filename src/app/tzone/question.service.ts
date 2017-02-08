@@ -14,9 +14,9 @@ export class QuestionService{
     getRandomQuestion(){
       let headers = new Headers({ 'Authorization': this.authService.token });
       let options = new RequestOptions({ headers: headers });
-
+      console.log(`QuestionService.getRandomQuestion(): token = ${this.authService.token}`);
       return this.http
-        .get(`${this.baseUrl}/question`, options)
+        .get(`${this.baseUrl}/practice-question`)
         .map(function(res:Response){
           return <Question>({
             questionId:res.json().questionId,
@@ -33,7 +33,7 @@ export class QuestionService{
       let headers = new Headers({ 'Authorization': this.authService.token });
       let options = new RequestOptions({ headers: headers });
       return this.http
-        .post(`${this.baseUrl}/question/${question.questionId}/option/${question.selectedOptionId}`,"",options);
+        .get(`${this.baseUrl}/practice-question/${question.questionId}/option/${question.selectedOptionId}`);
     }
 
 }
