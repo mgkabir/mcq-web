@@ -11,27 +11,17 @@ export class QuestionService{
   constructor(private http:Http, private authService:AuthService){
     }
 
-    getRandomQuestion(){
-      let headers = new Headers({ 'Authorization': this.authService.token });
-      let options = new RequestOptions({ headers: headers });
-      console.log(`QuestionService.getRandomQuestion(): token = ${this.authService.token}`);
+    /* practice-question is accessible without any token*/
+    getRandomQuestion(): Observable<Question>{
       return this.http
         .get(`${this.baseUrl}/practice-question`)
-        .map(function(res:Response){
-          return <Question>({
-            questionId:res.json().questionId,
-            questionText: res.json().questionText,
-            options:res.json().options,
-            answerText: res.json().answerText,
-          });
+        .map((res:Response)=>{
+          return res.json();
         });
     }
 
-    /*Submits selected option */
+    /*Submits selected option. /practice-question is accessible without any token*/
     submitAnswer(question: Question) : Observable<Response>{
-      console.log(`submitAnswer() : Token : ${this.authService.token} `);
-      let headers = new Headers({ 'Authorization': this.authService.token });
-      let options = new RequestOptions({ headers: headers });
       return this.http
         .get(`${this.baseUrl}/practice-question/${question.questionId}/option/${question.selectedOptionId}`);
     }
