@@ -23,7 +23,6 @@ import { AuthService } from './auth.service';
           </div>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
       </form>
-      <button class="btn btn-primary" (click)="logout()">Logout</button>
   </div>
     `
 })
@@ -40,7 +39,6 @@ export class LoginComponent {
   constructor(public authService: AuthService, public router: Router) {
   }
 
-
   login() {
       this.loading = true;
       this.authService.login(this.model.username, this.model.password)
@@ -55,9 +53,6 @@ export class LoginComponent {
           });
   }
 
-  logout(){
-    this.authService.logout();
-  }
 }
 
 export class LoginInfo {
