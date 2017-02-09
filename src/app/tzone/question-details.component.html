@@ -20,16 +20,18 @@
     </section>
   </div> <!-- Question and Options ends -->
   <div class="col-md-6"> <!-- Right / Wrong, Explanation here-->
-    <section *ngIf="answerSubmitted">
+    <section *ngIf="answerSubmitted && gotAnswer">
       <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
-        <div *ngIf="question.isAnswerCorrect">
-          <p class="lead text-success">Correct Answer !</p>
-        </div>
-        <div *ngIf="!question.isAnswerCorrect">
-          <p class="lead text-danger">Wrong Answer !</p>
-        </div>
-        <div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div>
-        <p class="text-info">{{question.answerText}}</p>
+          <div *ngIf="question.isAnswerCorrect">
+            <p class="text-success">Correct Answer !</p>
+          </div>
+          <div *ngIf="!question.isAnswerCorrect">
+            <p class="text-danger">Wrong Answer !</p>
+          </div>
+        <pre>
+          <div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div>
+        </pre>
+          <p class="text-info">{{question.answerText}}</p>
         <button type="submit" class="btn btn-primary">Next Question</button>
       </form>
     </section>

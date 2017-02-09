@@ -15,6 +15,8 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
     answerSubmitted: boolean = false;
     noCorrect: number = 0;
     noWrong: number = 0;
+    errMsg: string = "";
+    gotAnswer: boolean = false;
 
     constructor(private questionService: QuestionService,
                 private route: ActivatedRoute,
@@ -23,22 +25,39 @@ export class QuestionDetailsComponent implements OnInit, OnDestroy {
 
     nextQuestion(){
       this.answerSubmitted = false;
+      this.gotAnswer = false;
       this.questionService
         .getRandomQuestion()
-        .subscribe(q => this.question = q);
+        .subscribe(
+            q => {
+              this.question = q;
+              console.log(`next`);
+            },
+            err => {
+              this.errMsg = err;
+              console.log(`error`);
+            }
+          );
     }
 
     submitAnswer(){
       this.questionService
           .submitAnswer(this.question)
-          .subscribe(
-            (r: Response) => {
+          .subscribe((r: Response) => {
               this.question.isAnswerCorrect = r.json().correct;
-              if(this.question.isAnswerCorrect){
-                  this.noCorrect++;
-              }else{
-                  this.noWrong++;
-              }
+              if(this.question.isAnswerCorrect) this.noCorrect++;
+              else this.noWrong++;
+              this.gotAnswer = true;
+              console.log(`next`);
+            },
+            err => {
+              this.errMsg = err;
+              this.gotAnswer = false;
+              console.log(`error`);
+            },
+            () => {
+              this.gotAnswer = true
+              console.log(`completed`);
             }
           );
           this.answerSubmitted = true;
