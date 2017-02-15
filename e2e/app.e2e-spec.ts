@@ -1,10 +1,10 @@
-import { AngularQuickstartPage } from './app.po';
+import { MCQWEBPage } from './app.po';
 
-describe('angular-quickstart App', function() {
-  let page: AngularQuickstartPage;
+describe('mcq-web App', function() {
+  let page: MCQWEBPage;
 
   beforeEach(() => {
-    page = new AngularQuickstartPage();
+    page = new MCQWEBPage();
   });
 
   it('should display message saying app works', () => {
