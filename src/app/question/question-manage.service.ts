@@ -7,22 +7,27 @@ import {AuthService} from '../auth.service';
 @Injectable()
 export class QuestionManageService{
 
-  private baseUrl:string = 'http://localhost:8080';
+  //private baseUrl:string = 'http://localhost:8080';
+  private baseUrl:string = 'http://ec2-52-62-233-77.ap-southeast-2.compute.amazonaws.com:8080';
   constructor(private http:Http,private authService: AuthService){
     }
 
     /*POST operation for adding QuestionModel */
   addQuestion(question: QuestionModel) : Observable<Response>{
     console.log(`addQuestion() : ${question.questionId} -- ${question.questionText}`);
+    let headers = new Headers({ 'Authorization': this.authService.token,'Content-Type':'application/json'});
+    let options = new RequestOptions({ headers: headers });
     return this.http
-      .post(`${this.baseUrl}/questions`,JSON.stringify(question), {headers: this.getContentTypeHeader()});
+      .post(`${this.baseUrl}/questions`,JSON.stringify(question), options);
   }
 
     /*PUT operation for updating QuestionModel */
   updateQuestion(question: QuestionModel) : Observable<Response>{
     console.log(`updateQuestion() : ${question.questionId} -- ${question.questionText}`);
+    let headers = new Headers({ 'Authorization': this.authService.token,'Content-Type':'application/json'});
+    let options = new RequestOptions({ headers: headers });
     return this.http
-      .put(`${this.baseUrl}/questions`,JSON.stringify(question), {headers: this.getContentTypeHeader()});
+      .put(`${this.baseUrl}/questions`,JSON.stringify(question), options);
   }
 
   getQuestions(): Observable<QuestionModel[]>{

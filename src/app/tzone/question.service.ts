@@ -7,7 +7,8 @@ import {AuthService} from '../auth.service';
 @Injectable()
 export class QuestionService{
 
-  private baseUrl:string = 'http://localhost:8080';
+  //private baseUrl:string = 'http://localhost:8080';
+  private baseUrl:string = 'http://ec2-52-62-233-77.ap-southeast-2.compute.amazonaws.com:8080';
   constructor(private http:Http, private authService:AuthService){
     }
 
