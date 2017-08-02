@@ -14,11 +14,8 @@ import { PageNotFoundComponent} from './home/page-not-found.component';
 import { LoginComponent }          from './login.component';
 
 @NgModule({
-	declarations: [ AppComponent, HomeComponent,
-			PageNotFoundComponent, LoginComponent],
-	imports: [ BrowserModule, FormsModule, HttpModule,
-			TZoneModule, QuestionModule, LoginRoutingModule,
-			AppRoutingModule],
+	declarations: [ AppComponent, HomeComponent, PageNotFoundComponent, LoginComponent],
+	imports: [ BrowserModule, FormsModule, HttpModule,TZoneModule, QuestionModule, LoginRoutingModule, AppRoutingModule],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })
