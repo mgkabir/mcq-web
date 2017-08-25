@@ -39,7 +39,7 @@
       <label for="correctOption">Select Correct Option</label>
       <select class="form-control" id="correctOption" (change)="onChange($event.target.value)" required>
           <option value=""> ===> Please Select One <=== </option>
-          <option *ngFor="let option of question.options" [value]="option.optionId">{{option.optionText}}</option>
+          <option *ngFor="let option of question.options" [value]="option.optionId" [selected]="option.correct">{{option.optionText}}</option>
       </select>
     </div>
     <div class="form-group">
@@ -50,6 +50,4 @@
     <button type="submit" class="btn btn-primary">Save Question</button>
     <p class="text-info"> TODO : Remove diagnostic : {{question.questionId}} : {{question.questionText}}</p>
   </form>
-  <h3>Question Bank</h3>
-  <question-list></question-list>
 </div>
