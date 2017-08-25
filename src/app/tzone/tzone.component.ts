@@ -4,8 +4,8 @@ import {Component} from '@angular/core';
   template: `
 
     <div class="row">
-      <div class="col-md-1">
-        <!-- a routerLinkActive="text-uppercase text-success" [routerLink]="['./']">Question Home</a-->
+      <div class="col-md-2">
+        <a routerLinkActive="text-uppercase text-success" [routerLink]="['.']">Test Home</a>
       </div>
       <div class="col-md-2">
         <a routerLinkActive="text-uppercase text-success" [routerLink]="['practice']">Practice</a>
@@ -13,7 +13,7 @@ import {Component} from '@angular/core';
       <div class="col-md-2">
         <a routerLinkActive="text-uppercase text-success" [routerLink]="['modeltest']">Model Test</a>
       </div>
-      <div class="col-md-7"></div>
+      <div class="col-md-6"></div>
     </div>
     <router-outlet></router-outlet>
   `

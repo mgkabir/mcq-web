@@ -19,8 +19,8 @@ const questionRoutes: Routes = [
         path: '',
         //canActivateChild: [AuthGuard], /* All children are Guarded */
         children: [
-          { path: '',  component: QuestionHomeComponent },
-          { path: 'list', canActivate: [AuthGuard], component: QuestionListComponent }, /* ONLY list is Guarded*/
+          { path: '',  component: QuestionHomeComponent},
+          { path: 'list', canActivate: [AuthGuard], component: QuestionListComponent }, /* Guarded with AuthGuard*/
           { path: 'view/:id', component: QuestionViewComponent },
           { path: 'edit/:id', component: QuestionFormComponent },
           { path: 'add', component: QuestionFormComponent }
