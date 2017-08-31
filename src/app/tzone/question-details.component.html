@@ -23,10 +23,12 @@
     <section *ngIf="answerSubmitted && gotAnswer">
       <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
           <div *ngIf="question.isAnswerCorrect">
-            <p class="text-success">Correct Answer !</p>
+              <span class="glyphicon glyphicon-ok"></span>
+              <span class="text-success">Correct Answer !</span>
           </div>
           <div *ngIf="!question.isAnswerCorrect">
-            <p class="text-danger">Wrong Answer !</p>
+              <span class="glyphicon glyphicon-remove"></span>
+              <span class="text-danger">Wrong Answer !</span>
           </div>
         <pre>
           <div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div>
