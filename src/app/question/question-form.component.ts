@@ -26,6 +26,7 @@ export class QuestionFormComponent implements OnInit, OnDestroy{
 ngOnInit(){
     this.subscription = this.route.params.subscribe(params => {
     let id = Number.parseInt(params['id']);
+    /* check param to be a valid number before calling getQuestion */
     console.log("QuestionFormComponent.ngOnItnit() QID :"+id);
     this.questionManageService
       .getQuestion(id)

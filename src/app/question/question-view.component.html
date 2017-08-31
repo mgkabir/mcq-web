@@ -8,9 +8,9 @@
       </div>
       <div class="row" *ngFor="let opt of question.options">
         <div class="col-md-2 text-right" >
-            <span *ngIf="opt.correct">*</span>{{opt.optionId}}
+            <span class="glyphicon"  [class.glyphicon-star]="opt.correct" [class.glyphicon-star-empty]="!opt.correct"></span>
         </div>
-        <div class="col-md-10" >
+        <div class="col-md-10">
           {{opt.optionText}}
         </div>
       </div>
