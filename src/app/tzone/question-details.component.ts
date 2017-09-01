@@ -8,7 +8,8 @@ import { QuestionService } from './question.service';
 @Component({
   moduleId: module.id,
   selector: 'question-details',
-  templateUrl: './question-details.component.html'
+  templateUrl: './question-details.component.html',
+  styleUrls:['./question-details.component.css']
 })
 export class QuestionDetailsComponent implements OnInit, OnDestroy {
     question: Question;
