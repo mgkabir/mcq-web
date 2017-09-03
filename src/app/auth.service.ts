@@ -18,33 +18,31 @@ export class AuthService {
   constructor(private http:Http, private router: Router){
       // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        /* TODO : check token validity first */
         this.token = currentUser && currentUser.token;
     }
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  
+    /* this will be used to send user to the page before login.*/
+    redirectUrl: string; 
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string) {
     console.log(`AuthService.login() : user , pass = ${username}, ${password}`);
       return this.http.post(`${this.baseUrl}/login`, JSON.stringify({ username: username, password: password }))
-          .map((response: Response) => {
-              console.log(`AuthService.login() : response ${response.json()}`);
-              // login successful if there's a jwt token in the response
-              let token = response.json().token;
-
-              console.log(`AuthService.login() : token = ${token}`);
-              if (token) {
-                  // set token property
-                  this.token = token;
-                  // store username and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
-                  // return true to indicate successful login
-                  return true;
-              } else {
-                  // return false to indicate failed login
-                  return false;
-              }
-          });
-  }
+          .map(res => {
+            // login successful if there's a jwt token in the response
+            let token = res.json().token;
+            if(token){
+                this.token = token;
+                 // store username and jwt token in local storage
+                 localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+            }
+            return true;
+          },
+        err =>{
+            console.log(err.status);
+            return false;
+        });
+        }
 
   logout(): void {
       // clear token remove user from local storage to log user out

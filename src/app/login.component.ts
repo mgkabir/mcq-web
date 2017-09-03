@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
   template: `
   <div class="col-md-6 col-md-offset-3">
       <h2>Login</h2>
+      <div *ngIf="errorMsg != ''" class="alert alert-danger">{{errorMsg}}</div>
       <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
           <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
               <label for="username">Username</label>
@@ -21,7 +22,7 @@ import { AuthService } from './auth.service';
               <button [disabled]="loading" class="btn btn-primary">Login</button>
               <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
           </div>
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          
       </form>
   </div>
     `
@@ -33,26 +34,28 @@ export class LoginComponent {
       password:""
     };
   loading = false;
-  error = '';
+  errorMsg = '';
 
 
   constructor(public authService: AuthService, public router: Router) {
   }
 
   login() {
-      this.loading = true;
-      this.authService.login(this.model.username, this.model.password)
-          .subscribe(result => {
-            console.log(`LoginComponent.login() : result : ${result}`);
-              if (result) {
-                  this.router.navigate(['/']);
-              } else {
-                  this.error = 'Username or password is incorrect';
-                  this.loading = false;
-              }
-          });
+    this.loading = true;
+    this.authService.login(this.model.username, this.model.password)
+        .subscribe(res=>{
+            console.log("login comp : "+res);
+            this.router.navigate(['/']);
+        },
+        err=>{
+            console.log("login comp : "+err);
+            this.errorMsg = 'Username or password is incorrect';            
+            this.loading = false;
+        });
+        
   }
 
+    /************ */
 }
 
 export class LoginInfo {
