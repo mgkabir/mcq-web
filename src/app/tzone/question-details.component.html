@@ -2,10 +2,9 @@
   <!-- Question and Options display here -->
   <div class="col-md-6"> 
     <section *ngIf="question">
-      <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
+      <form (ngSubmit)="submitAnswer()" #f="ngForm">
             <h4>Question # {{question.questionId}}</h4>
             <p class="text-info">{{question.questionText}}</p>
-            <div>
               <div class="radio" *ngFor="let opt of question.options">
                   <label >
                       <input type="radio" name="answer" [(ngModel)]="question.selectedOptionId"
@@ -13,9 +12,8 @@
                       {{opt.optionText}}
                   </label>
               </div>
-            </div>
             <div *ngIf="!answerSubmitted">
-              <button type="submit" [disabled]="!mcqForm.form.valid" class="btn btn-primary">Submit Choice</button>
+              <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit Choice</button>
             </div>
       </form>
     </section>
@@ -25,8 +23,8 @@
     <section *ngIf="answerSubmitted && gotAnswer">
       <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
         <div *ngIf="question.isAnswerCorrect; then answerCorrect else answerWrong"></div>
-        <pre><p class="text-info">{{question.answerText}}</p></pre>
-        <pre><div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div></pre>
+        <pre><p class="alert alert-info">{{question.answerText}}</p></pre>
+        <pre><div class="alert alert-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div></pre>
         <button type="submit" class="btn btn-primary">Next Question</button>
       </form>
     </section>
@@ -35,10 +33,8 @@
 
 <!-- Templates for Correct or Incorrect answers -->
 <ng-template #answerCorrect>
-    <span class="glyphicon glyphicon-ok"></span>
-    <span>Correct Answer !</span>
+    <div class="alert alert-success"><span class="glyphicon glyphicon-ok">&nbsp;</span>Correct Answer !</div>
 </ng-template>
 <ng-template #answerWrong>
-    <span class="glyphicon glyphicon-remove"></span>
-    <span>Wrong Answer !</span>
+    <div class="alert alert-warning"><span class="glyphicon glyphicon-remove">&nbsp;</span>Wrong Answer !</div>
 </ng-template>

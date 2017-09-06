@@ -38,10 +38,11 @@ export class AuthService {
             }
             return true;
           },
-        err =>{
-            console.log(err.status);
-            return false;
-        });
+          (err:Response) =>{
+              if(err.status === 401)
+              console.log("Auth Service:login() : "+err.statusText);
+              return false;
+          });
         }
 
   logout(): void {
