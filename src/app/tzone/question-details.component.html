@@ -1,5 +1,6 @@
 <div class="row well">
-  <div class="col-md-6"> <!-- Question and Options starts -->
+  <!-- Question and Options display here -->
+  <div class="col-md-6"> 
     <section *ngIf="question">
       <form (ngSubmit)="submitAnswer()" #mcqForm="ngForm">
             <h4>Question # {{question.questionId}}</h4>
@@ -18,24 +19,26 @@
             </div>
       </form>
     </section>
-  </div> <!-- Question and Options ends -->
-  <div class="col-md-6"> <!-- Right / Wrong, Explanation here-->
+  </div>
+  <!-- Right / Wrong, Explanation goes below -->
+  <div class="col-md-6"> 
     <section *ngIf="answerSubmitted && gotAnswer">
       <form (ngSubmit)="nextQuestion()" #nextQForm="ngForm">
-          <div *ngIf="question.isAnswerCorrect">
-              <span class="glyphicon glyphicon-ok"></span>
-              <span>Correct Answer !</span>
-          </div>
-          <div *ngIf="!question.isAnswerCorrect">
-              <span class="glyphicon glyphicon-remove"></span>
-              <span>Wrong Answer !</span>
-          </div>
-        <pre>
-          <div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div>
-        </pre>
-          <p class="text-info">{{question.answerText}}</p>
+        <div *ngIf="question.isAnswerCorrect; then answerCorrect else answerWrong"></div>
+        <pre><p class="text-info">{{question.answerText}}</p></pre>
+        <pre><div class="text-info">Correct : {{noCorrect}} Wrong :{{noWrong}}</div></pre>
         <button type="submit" class="btn btn-primary">Next Question</button>
       </form>
     </section>
   </div>
 </div>
+
+<!-- Templates for Correct or Incorrect answers -->
+<ng-template #answerCorrect>
+    <span class="glyphicon glyphicon-ok"></span>
+    <span>Correct Answer !</span>
+</ng-template>
+<ng-template #answerWrong>
+    <span class="glyphicon glyphicon-remove"></span>
+    <span>Wrong Answer !</span>
+</ng-template>
