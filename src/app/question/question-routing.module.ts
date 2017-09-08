@@ -23,7 +23,7 @@ const questionRoutes: Routes = [
           { path: 'list', canActivate: [AuthGuard], component: QuestionListComponent }, /* Guarded with AuthGuard*/
           { path: 'view/:id', component: QuestionViewComponent },
           { path: 'edit/:id', component: QuestionFormComponent },
-          { path: 'add', component: QuestionFormComponent }
+          { path: 'add',canActivate: [AuthGuard], component: QuestionFormComponent }
         ]
       }
     ]

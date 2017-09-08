@@ -12,20 +12,18 @@ import {AuthService} from './auth.service';
 
 export class AppComponent {
 	 title:string = 'MCQ Web Application';
-	 loggedInUsername: string = "";
+	 userName: string;
 
-		constructor(private authService: AuthService){}
+	constructor(private authService: AuthService){}
 
 	isLoggedIn(): boolean{
-		let loggedIn: boolean = false;
-		let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-		if(currentUser){
-			this.loggedInUsername = currentUser.username;
-			/*if token exists then user is considered loggedIn. Not checking expiration now*/
-			if(currentUser.token) loggedIn = true;
-		}
-		return loggedIn;
+		let isLoggedIn = false;
+		if(this.authService.isLoggedIn())
+			{
+				this.userName = localStorage.getItem('userName');
+				isLoggedIn = true;
+			}
+		return isLoggedIn;
 	}
 
 	logout(){

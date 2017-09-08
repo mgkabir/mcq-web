@@ -47,8 +47,8 @@ export class LoginComponent {
             console.log("login comp : "+res);
             this.router.navigate(['/']);
         },
-        err=>{
-            console.log("login comp : "+err);
+        (err:Response)=>{
+            console.log(`login comp err : ${err.status} : ${err.statusText} : ${err.url}` ); // 401
             this.errorMsg = 'Username or password is incorrect';            
             this.loading = false;
         });
@@ -58,7 +58,7 @@ export class LoginComponent {
     /************ */
 }
 
-export class LoginInfo {
+export interface LoginInfo {
   username: string;
   password: string;
 }
