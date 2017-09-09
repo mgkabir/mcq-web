@@ -1,5 +1,5 @@
 import { Component }   from '@angular/core';
-import { Router }      from '@angular/router';
+import { Router, ActivatedRoute }      from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -37,15 +37,18 @@ export class LoginComponent {
   errorMsg = '';
 
 
-  constructor(public authService: AuthService, public router: Router) {
-  }
+  constructor(
+      private authService: AuthService, 
+      private router: Router,
+      private route: ActivatedRoute ) {}
 
   login() {
     this.loading = true;
     this.authService.login(this.model.username, this.model.password)
         .subscribe(res=>{
-            console.log("login comp : "+res);
-            this.router.navigate(['/']);
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+            console.log("login comp returnUrl : "+returnUrl);
+            this.router.navigate([returnUrl || '/']);
         },
         (err:Response)=>{
             console.log(`login comp err : ${err.status} : ${err.statusText} : ${err.url}` ); // 401

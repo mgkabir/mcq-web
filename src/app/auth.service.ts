@@ -3,9 +3,6 @@ import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import { Http, Response, Headers} from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
 
 import {LoginInfo} from './login.component';
 
@@ -26,7 +23,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, JSON.stringify({ username: username, password: password }))
           .map(res => {
             // login successful if there's a jwt token in the response
-            let token = res.json().token;
+            let token = res.json() && res.json().token;
             if(token){
                  // store username and jwt token in local storage
                  localStorage.setItem('userName', username);
@@ -45,7 +42,8 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean{
-    return tokenNotExpired();
+    /* checks for presence of Token and that Token hasn't expired.*/
+    return tokenNotExpired(); 
 	}
 
   private getContentTypeHeader(){
