@@ -58,7 +58,7 @@ export class LoginComponent {
         
   }
 
-    /************ */
+    /*************/
 }
 
 export interface LoginInfo {

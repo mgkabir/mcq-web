@@ -11,14 +11,8 @@ export class AuthService {
   private baseUrl:string = 'http://localhost:8080';
   //private baseUrl:string = 'http://ec2-52-62-233-77.ap-southeast-2.compute.amazonaws.com:8080';
 
-  constructor(private http:Http, private router: Router){
-      // set token if saved in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+  constructor(private http:Http, private router: Router){}
   
-    /* this will be used to send user to the page before login.*/
-    redirectUrl: string; 
-
   login(username: string, password: string) {
     return this.http.post(`${this.baseUrl}/login`, JSON.stringify({ username: username, password: password }))
           .map(res => {
@@ -45,10 +39,4 @@ export class AuthService {
     /* checks for presence of Token and that Token hasn't expired.*/
     return tokenNotExpired(); 
 	}
-
-  private getContentTypeHeader(){
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return headers;
-  }
 }
