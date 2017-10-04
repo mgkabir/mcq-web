@@ -22,7 +22,7 @@ import { LoginComponent }          from './login.component';
             headerName: 'Authorization',
             headerPrefix: 'Bearer',
             tokenName: 'token',
-            tokenGetter: (() => localStorage.getItem('token')),
+            //tokenGetter: (() => localStorage.getItem('token')),
             globalHeaders: [{ 'Content-Type': 'application/json' }],
             noJwtError: true
         })

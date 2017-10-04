@@ -3,3 +3,10 @@
 .glyphicon{
     font-size: 1.5em;
 }
+hr {
+    height: 4px;
+    margin-bottom:-1px;
+  }
+.hr-primary{
+    background-image: -webkit-linear-gradient(left, rgba(28, 87, 184, 0.80), rgba(66, 133, 244,.6), rgba(98, 16, 16, 0.00));
+  }

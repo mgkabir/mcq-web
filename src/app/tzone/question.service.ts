@@ -21,6 +21,7 @@ export class QuestionService{
 
     /*Submits selected option. /practice-question is accessible without any token*/
     submitAnswer(question: Question) : Observable<Response>{
+      // Use POST instead of GET
       return this.http
         .get(`${this.baseUrl}/practice-question/${question.questionId}/option/${question.selectedOptionId}`);
     }
