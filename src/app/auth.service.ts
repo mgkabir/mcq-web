@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
+import {tokenNotExpired} from 'angular2-jwt';
 import { Http, Response, Headers} from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -35,8 +35,12 @@ export class AuthService {
       this.router.navigate(['/home']);
   }
 
-  isLoggedIn(): boolean{
+  public isLoggedIn(): boolean{
     /* checks for presence of Token and that Token hasn't expired.*/
     return tokenNotExpired(); 
-	}
+  }
+
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }  
 }

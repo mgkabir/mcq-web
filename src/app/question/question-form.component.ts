@@ -59,9 +59,8 @@ ngOnDestroy(){
       this.questionManageService
           .updateQuestion(this.question)
           .subscribe(
-            (r: Response) => {
-              this.question = r.json();
-              console.log(`QID : ${this.question.questionId}`);
+            (q: QuestionModel) => {
+              this.question = q;
               this.submitMsg = "Question Updated.";
             }
           );
@@ -69,12 +68,9 @@ ngOnDestroy(){
       this.questionManageService
           .addQuestion(this.question)
           .subscribe(
-            (r: Response) => {
-              console.log(r.json());
-              /*collect questionId from response.
-              based on this add / update method can be called from UI*/
-              this.question = r.json();
-              console.log(`QID : ${this.question.questionId}`);
+            (q: QuestionModel) => {
+              console.log(q);
+              this.question = q;
               this.submitMsg = "Question Added.";
             }
           );
